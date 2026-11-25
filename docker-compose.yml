@@ -1,0 +1,19 @@
+services:
+  mydb:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: sales
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile.ingest
+
+volumes:
+  pgdata:

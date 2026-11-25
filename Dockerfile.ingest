@@ -1,0 +1,5 @@
+FROM python:3.13-slim
+RUN pip install pandas sqlalchemy "psycopg[binary]"
+WORKDIR /code
+COPY ingest.py .
+ENTRYPOINT ["python", "ingest.py"]
